@@ -1,10 +1,11 @@
 
+
 let userOpetion = window.prompt(`
 
     ~Simple Calculator~
     
     opetions --
-    1. Addtion 
+    1. Addtion \n
     2. Substruction 
     3. Multiplication 
     4. Division 
@@ -13,6 +14,8 @@ let userOpetion = window.prompt(`
     7. Average
 
 `);
+
+
 
 (
     function Calculator(){
@@ -33,8 +36,6 @@ let userOpetion = window.prompt(`
                     }
                 window.alert("Result : " + sum );
                 console.log("Result : " + sum);
-                    
-
                  })(...inputadd);
                  break;
             case "2":
@@ -47,6 +48,7 @@ let userOpetion = window.prompt(`
                         console.log("The Result is " + r);
                         window.alert("The result is " + r);
                     }
+                    
                 )();    
             case "3":
                 let inputmul=  window.prompt("enter the arrays:  ");
@@ -148,3 +150,4 @@ let userOpetion = window.prompt(`
     }
 
 )();
+
