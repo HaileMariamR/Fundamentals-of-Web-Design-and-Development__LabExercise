@@ -11,40 +11,49 @@ const nine = document.querySelector('.btnnine');
 const add = document.querySelector('.btnplus');
 const sub = document.querySelector('.btnmius');
 const mul = document.querySelector('.btnx');
-
-
+const divide = document.querySelector('.btndiv');
+const operands = document.querySelector('.operands');
 
 const input = document.querySelector("#inputNumber");
 const result = document.querySelector(".result") ;
 var numberArrays = [zero,one,two,three,four,five,six,seven,eight,nine]
-
 let firstNumber = "";
 let secondNumber = "";
 let isOperator = false;
+var opratorList = [];
 
 function onNumberClicked(...inputarray){
-      var inputValue = input.value ;
+    
       var i ;
       for (i= 0; i < numberArrays.length; i++) {
-          numberArrays[i].addEventListener('click' , ()=>{
-            if (isOperator){
-              firstNumber += inputValue.toString();
-              result.textContent = firstNumber;
-              console.log("clicked");
-              
+          numberArrays[i].addEventListener('click' , (e)=>{
+            if (isOperator === false){
+              firstNumber +=e.target.textContent;
+              operands.textContent = firstNumber;
             }
             else{
-              secondNumber += inputValue.toString();
-
+              operands.textContent = firstNumber;
+              operands.textContent = "";
+              secondNumber  +=e.target.textContent;
             }
-            
+
           
           });
           
         
         }
-      
-
 }
 
 onNumberClicked(numberArrays);
+
+add.addEventListener('click' , (e)=>{
+
+    isOperator = true;
+    firstNumber = operands.textContent;
+    operands.textContent = "";
+    opratorList.push(e.target.textContent);
+
+
+
+});
+
