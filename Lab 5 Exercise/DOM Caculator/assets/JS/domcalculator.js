@@ -20,18 +20,74 @@ const clear = document.querySelector('.btnclear');
 const input = document.querySelector("#inputNumber");
 const result = document.querySelector(".result") ;
 const power = document.querySelector('.btnpow');
-
-
-
-
+const sqrt = document.querySelector('.btnsqrt');
+const max = document.querySelector('.btnmax');
+const comma = document.querySelector('.btncomma');
 var numberArrays = [zero,one,two,three,four,five,six,seven,eight,nine]
 let firstNumber = "";
 let secondNumber = "";
 let isOperator = false;
-let operatorArrays = [power,sub,divide,mul]
+let operatorArrays = [power,sub,divide,sqrt]
+
+comma.addEventListener('click' , (e)=>{
+  firstNumber +=e.target.textContent;
+  fNumber.textContent = firstNumber;
+});
+
+add.addEventListener('click' , (e)=>{
+
+      
+      firstNumber += e.target.textContent;
+      fNumber.textContent = firstNumber;
+    
+
+      oprerator.textContent = '+';
+
+      oprerator.style.display = "none";
+      
+
+});
+mul.addEventListener('click' , (e)=>{
+
+      
+  firstNumber += e.target.textContent;
+  fNumber.textContent = firstNumber;
 
 
-////////////////////////////////////////////
+  oprerator.textContent = '*';
+
+  oprerator.style.display = "none";
+  
+
+});
+max.addEventListener('click' , (e)=>{
+
+  oprerator.textContent = "max";
+  oprerator.style.display = "none";
+
+
+  let maximumString = fNumber.textContent;
+  let numb= "";
+  let maximum = parseInt(maximumString[0]);
+  var index;
+    for ( index = 0; index <= maximumString.length; index++) {
+      if(isNaN(maximumString[index])){
+          if (parseInt(numb) > maximum){
+            maximum = parseInt(numb);
+          }
+          numb = "";
+          
+      } 
+      else{
+          numb += maximumString[index]
+      }
+
+    }
+result.textContent ="   max =  " + maximum;
+});
+
+
+
 function onNumberClicked(...inputarray){
     
       var i ;
@@ -78,9 +134,12 @@ function onOperatorClicked(...inputarray){
 onOperatorClicked(operatorArrays);
 
 
-///////////////////////////////
 
 equal.addEventListener('click' , ()=>{
+
+
+
+
    let operatorValue = oprerator.textContent;
    let finalResult ;
    let finalFirstNumber  = parseInt(firstNumber);
@@ -99,9 +158,50 @@ equal.addEventListener('click' , ()=>{
                 finalResult = finalFirstNumber / finalSecondNumber;
                 result.textContent ='=' + finalResult;
                 break;
-      case "*"  : finalResult = finalFirstNumber * finalSecondNumber;
+      case  "√" : finalResult = finalFirstNumber **(1/2);
                 result.textContent = '=' + finalResult;
                 break;
+      case "+" :
+                
+              let stringofNumbersandoperators = fNumber.textContent;
+              let number = "";
+              let sum = 0;
+              var index;
+               for ( index = 0; index <= stringofNumbersandoperators.length; index++) {
+                  if(isNaN(stringofNumbersandoperators[index])){
+                      sum +=parseInt(number)
+                      number = "";
+                      
+                  }
+                  else{
+                      number += stringofNumbersandoperators[index]
+                  }
+
+               }
+              result.textContent ="=" + sum;
+              break;
+        case "*" :
+          
+                let multiplicationString = fNumber.textContent;
+                let num = "";
+                let multiplication = 1;
+                var index;
+                  for ( index = 0; index <= multiplicationString.length; index++) {
+                    if(isNaN(multiplicationString[index])){
+                        multiplication *=parseInt(num)
+                        num = "";
+                        
+                    } 
+                    else{
+                        num += multiplicationString[index]
+                    }
+
+                  }
+                result.textContent ="=" + multiplication;
+                break;
+
+
+
       default:
                 console.log("no options");
       
@@ -122,3 +222,4 @@ clear.addEventListener('click' ,()=>{
     isOperator = false;
     
 });
+

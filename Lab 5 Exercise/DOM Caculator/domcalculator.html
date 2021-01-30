@@ -6,34 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <style>
+     .inputOutput{
+         height: 40px;
+         background-color: rgb(201, 169, 129);
+         width: 15rem;
+         margin-left: 2rem;
+         padding-bottom: 2rem;
+         padding-top: 1rem;
+     }
+    </style>
 </head>
 <body>
 
     <div class="container-fluid">
-            <h2>Caclcualtor</h2>
-            <span class="firstNumber"></span><span class="operator"></span><span class="secondNumber"></span><span class="result"></span>
+    
           
-            <div class=" col-md-4 p-3 m-4">
+            <div class=" col-md-4 p-3 m-4" style="background-color:rgb(26, 17, 17)">
+                <div class="row">
+                    <div class="col-md-6 inputOutput">
+                        <span class="firstNumber"></span><span class="operator"></span><span class="secondNumber"></span><span class="result"></span>
+
+                    </div>
+
+                </div>
                 <div class="row m-3">
                     <div class="col-md-3 ">
                     </div>
                     <div class="col-md-3 ">
                     </div>
-                    <div class="col-md-3 ">
-                    </div>
-                    <div class="col-md-3 ">
-                        <button class="btn btn-outline-primary btnclear">clear</button>
+                    
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-primary btnclear" style="width: 80px; margin-left: 50px;" >clear</button>
                     </div>
 
-            </div>
+                 </div>
             
                 <div class="row m-3">
                     <div class="col-md-3  ">
                         <button class="btn btn-outline-primary btnmax">Max</button>
                     </div>
                     <div class="col-md-3 ">
-                        <button class="btn btn-outline-primary btnmin">min</button>
+                        <button class="btn btn-outline-primary btnsqrt">√</button>
                     </div>
                     <div class="col-md-3 ">
                         <button class="btn btn-outline-primary btnpow">^</button>
@@ -94,23 +108,21 @@
                 
                 <div class="row m-3">
                     <div class="col-md-3">
+                        <button class="btn btn-outline-primary btncomma" >,</button>
 
                     </div>
                     <div class="col-md-3 ">
                         <button class="btn btn-outline-primary btnzero" >0</button>
                     </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-3 ">
-                        <button class="btn btn-outline-primary btnequal">=</button>
+                    <div class="col-md-6" >
+                        <button class="btn btn-outline-primary btnequal" style="width: 130px;">=</button>
                     </div>
                    
 
                 </div>
             
                 
-                
-
+    
             </div>
 
     </div>
