@@ -15,10 +15,11 @@
     <title>Task List App</title>
 </head>
 
+
+
+
+
 <body>
-
-
-
     <!-- Navigation  -->
     <nav>
         <div class="container">
@@ -49,6 +50,8 @@
                             <div class="input-field col s12">
                                 <input type="text" name="task" id="task">
                                 <label for="task">Add New Task</label>
+                                
+                             
                             </div>
                             <input type="submit" value="Add New Task" class="btn blue">
                         </form>
@@ -61,8 +64,18 @@
                         <input type="search" name="filter" id="filter">
                         <label for="filter">Search</label>
                     </div>
+                                
+         <select name="select" class="btn btn-outline Danger" id="selectoption">
+            <option value="descending">descending</option>
+
+            <option value="ascending">ascending</option>
+
+         </select > 
                     <ul class="collection">
                         <!-- Here is the task list goes  -->
+                    </ul>
+                    <ul class="collection-temp">
+                        <!-- Here is the sorted out task list goes temporary holder -->
                     </ul>
                     <a href="#" class="clear-tasks btn red">Clear All Task</a>
                 </div>

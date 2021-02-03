@@ -61,7 +61,7 @@ mul.addEventListener('click' , (e)=>{
 
 });
 max.addEventListener('click' , (e)=>{
-
+  isOperator = true;
   oprerator.textContent = "max";
   oprerator.style.display = "none";
 
@@ -123,6 +123,7 @@ function onOperatorClicked(...inputarray){
         isOperator = true;
 
         oprerator.textContent = e.target.textContent;
+        
 
 
       });
