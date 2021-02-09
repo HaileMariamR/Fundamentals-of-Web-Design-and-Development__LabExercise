@@ -64,6 +64,7 @@ function addNewTask(e) {
     li.appendChild(link);
     // Append to UL 
     taskList.appendChild(li);
+    addToDatabase(taskInput.value)
 
 
   
@@ -71,8 +72,6 @@ function addNewTask(e) {
 
 
 }
-
-
 
 
 
