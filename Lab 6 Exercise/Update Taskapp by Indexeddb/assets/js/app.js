@@ -4,17 +4,26 @@ const form = document.querySelector('#task-form'); //The form at the top
 const filter = document.querySelector('#filter'); //the task filter text field
 const taskList = document.querySelector('.collection'); //The UL
 const clearBtn = document.querySelector('.clear-tasks'); //the all task clear button
-
+const selectElement = document.querySelector('#selectoption')
 const reloadIcon = document.querySelector('.fa'); //the reload button at the top navigation 
-
+const add = document.querySelector('.add');
 //DB variable 
 
 let DB;
-
-
-
 // Add Event Listener [on Load]
 document.addEventListener('DOMContentLoaded', () => {
+
+    selectElement.addEventListener('change' , (e)=>{
+
+        if (e.target.value == 'ascending'){
+            displayTaskListasce()
+        }
+        if(e.target.value == 'descending')(
+            displayTaskList()
+        )
+    }
+    );
+    add.addEventListener('click' , displayTaskList)
     // create the database
     let TasksDB = indexedDB.open('tasks', 1);
 
@@ -22,15 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
     TasksDB.onerror = function() {
             console.log('There was an error');
         }
-        // if everything is fine, assign the result to the instance
+        // if everything is fine, assign the result to the instance 
     TasksDB.onsuccess = function() {
         // console.log('Database Ready');
-
         // save the result
         DB = TasksDB.result;
-
         // display the Task List 
         displayTaskList();
+        // displayTaskListasce()
     }
 
     // This method runs once (great for creating the schema)
@@ -63,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // create a new object with the form info
         let newTask = {
             taskname: taskInput.value,
+            date : new Date()
         }
 
         // Insert the object into the database 
@@ -78,29 +87,55 @@ document.addEventListener('DOMContentLoaded', () => {
         transaction.oncomplete = () => {
             console.log('New appointment added');
 
-            displayTaskList();
+            // displayTaskList();
         }
         transaction.onerror = () => {
             console.log('There was an error, try again!');
         }
 
-    }
+
+
+}
+
+  
+
+
 
     function displayTaskList() {
         // clear the previous task list
         while (taskList.firstChild) {
             taskList.removeChild(taskList.firstChild);
         }
+        
+
+    
+
+        // let taskCollections =[];
+        // let sortedelement;
+      
 
         // create the object store
         let objectStore = DB.transaction('tasks').objectStore('tasks');
 
         objectStore.openCursor().onsuccess = function(e) {
+            // let newtaskitem = {
+            //     taskitemname : '',
+            //     date :0,
+            //     id:0
+            // }
+
             // assign the current cursor
             let cursor = e.target.result;
 
             if (cursor) {
+              
+                
+                // newtaskitem.taskitemname = cursor.value.taskname;
+                // newtaskitem.date =parseInt(cursor.value.date);
+                // newtaskitem.id = cursor.value.id;
 
+                // taskCollections.push(newtaskitem);
+                
                 // Create an li element when the user adds a task 
                 const li = document.createElement('li');
                 //add Attribute for delete 
@@ -116,17 +151,118 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.innerHTML = `
                  <i class="fa fa-remove"></i>
                 &nbsp;
-                <a href="/Lesson 04 [Lab 06]/Finished/edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
+                <a href="./edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
                 `;
                 // Append link to li
                 li.appendChild(link);
                 // Append to UL 
                 taskList.appendChild(li);
                 cursor.continue();
+
             }
+            // else{
+            //     // sortedelement = taskCollections.sort((a,b) => (a.date - b.date)?1:-1);
+            //     // console.log(sortedelement);
+            // }
+         
+          
+
+
+            
         }
+ 
+    
+
     }
 
+
+
+    function displayTaskListasce() {
+        // clear the previous task list
+        while (taskList.firstChild) {
+            taskList.removeChild(taskList.firstChild);
+        }
+        
+
+    
+
+        let taskCollections =[];
+        let sortedelement;
+      
+
+        // create the object store
+        let objectStore = DB.transaction('tasks').objectStore('tasks');
+
+        objectStore.openCursor().onsuccess = function(e) {
+            // let newtaskitem = {
+            //     taskitemname : '',
+            //     date :0,
+            //     id : 0
+            // }
+
+            // assign the current cursor
+            let cursor = e.target.result;
+
+            if (cursor) {
+                
+                
+                // newtaskitem.taskitemname = cursor.value.taskname;
+                // newtaskitem.date =parseInt(cursor.value.date);
+                // newtaskitem.id = cursor.value.id;
+                taskCollections.push({
+                    taskitemname:cursor.value.taskname,
+                    date : parseInt(cursor.value.date),
+                    id:cursor.value.id 
+                });
+
+               
+                cursor.continue();
+
+
+            }
+            else{
+               console.log('success');
+               sortedelement = taskCollections.sort((a,b) => (a.date - b.date)?1:-1);
+
+               console.log(sortedelement);
+                // Create an li element when the user adds a task 
+               sortedelement.forEach((taskss) =>{
+                   const li = document.createElement('li');
+                   //add Attribute for delete 
+                   li.setAttribute('data-task-id', taskss.id);
+                   // Adding a class
+                   li.className = 'collection-item';
+                   // Create text node and append it 
+                   li.appendChild(document.createTextNode(taskss.taskitemname));
+                   // Create new element for the link 
+                   const link = document.createElement('a');
+                   // Add class and the x marker for a 
+                   link.className = 'delete-item secondary-content';
+                   link.innerHTML = `
+                    <i class="fa fa-remove"></i>
+                   &nbsp;
+                   <a href="./edit.html?id=${taskss.id}"><i class="fa fa-edit"></i> </a>
+                   `;
+                   // Append link to li
+                   li.appendChild(link);
+                   // Append to UL 
+                   taskList.appendChild(li);
+
+               });
+
+            }
+         
+          
+
+
+            
+        }
+ 
+    
+
+    }
+   
+    
     // Remove task event [event delegation]
     taskList.addEventListener('click', removeTask);
 
@@ -165,4 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+
+
 });
+
