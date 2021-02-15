@@ -13,12 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function diplay(){
-
     dimmerValue.style.display = 'block';
     setTimeout(loadDataNew , 3000);
-
-
-
 }
 //load a single customer function 
 function load_fromPlaceHolder() {
