@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+    
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <style>
+
+      .allImagePlaceHolder img{
+            width: 15rem;
+            height: 15rem;
+            margin: 1rem;
+        }
+        
+        
+    
+            .owl-item > div {
+            cursor: pointer;
+            margin: 6% 8%;
+            transition: margin 0.4s ease;
+            }
+            .owl-item.center > div {
+            cursor: auto;
+            margin: 0;
+            }
+            .owl-item:not(.center) > div:hover {
+            opacity: .75;
+            }
+
+            .owl-carousel div img {
+                height: 20rem;
+            }
+
+    </style>
+</head>
+<body>
+    
+
+
+  <div class="ui top attached tabular menu">
+    <a class="active item" href="/Lab  7 Exercise/Starter/index.html">
+      Home
+    </a>
+    <a class="item" href="/Lab  7 Exercise/Starter/api.html">
+        API
+      </a>
+
+      <a class="item" href="/Lab  7 Exercise/Clock/index.html">
+        Clock
+      </a>
+      <a class="item" href="/Lab  7 Exercise/Gallary/owl.html">
+        Gallary
+      </a>
+    <div class="right menu">
+        <div class="item">
+            <div class="ui transparent icon input">
+                <input type="text" placeholder="Search users..." data-np-checked="1">
+                <i class="search link icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="owl-carousel">
+          <div ><img  class="itemOne" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+          <div ><img  class="" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+
+          <div ><img  class="itemTwo" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+          <div ><img  class="itemThree" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+          <div ><img  class="" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+
+          <div ><img  class="itemFour" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+          <div ><img  class="itemFive" src="https://i.pinimg.com/236x/cd/9a/18/cd9a1824e8fc7113e96853266eb06750.jpg" alt=""></div>
+         
+        </div>
+
+      </div>
+
+
+      <h2 style="font-family: 'Pacifico', cursive;">All Images</h2>
+    
+      <div style="margin-left: 5rem;" class="allImagePlaceHolder">
+  
+  
+      </div>
+  
+
+
+
+
+
+
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+      <script src="./JS/app.js"></script>
+      <script>
+           
+           var $owl = $('.owl-carousel');
+
+                $owl.children().each( function( index ) {
+                $(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+                });
+
+                $owl.owlCarousel({
+                center: true,
+                loop: true,
+                items: 5,
+                });
+
+                $(document).on('click', '.owl-item>div', function() {
+                // see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
+                var $speed = 300;  // in ms
+                $owl.trigger('to.owl.carousel', [$(this).data( 'position' ), $speed] );
+                });
+         
+      </script>
+      
+</body>
+</html>
