@@ -20,11 +20,10 @@ function forINLoop() {
                 let count = 0;
                 forInLoop.innerHTML +=
                 `
-                <li class="list-group-item" >${key} : ${values[count]}</li>
+                <li class="list-group-item" >${key} : ${student[key]}</li>
 
             `;
             
-            count++;
     }
 
     // 2. Inside the loop paint the UI [Use the Format Given Below]
@@ -52,7 +51,16 @@ function forOFLoop() {
 
     // 2. Inside the loop paint the UI [Use the Format Given Below]
 
+    for (const iterator of students) {
 
+    forOfLoop.innerHTML +=
+        `
+        <li class="list-group-item" >Name : ${iterator.name}</li>
+
+    `;
+
+        
+    }
     //Use this Format 
 
     // forOfLoop.innerHTML +=

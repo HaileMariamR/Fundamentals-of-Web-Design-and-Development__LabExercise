@@ -24,15 +24,18 @@ function arrayDestructuring() {
 
 
     // we have an array with the name and surname
-    let str = "Margaery,Tyrell" 
-    str.split(',');
+    let str = "Margaery Tyrell" 
+    str.split(" ");
    let  [firstNames , lastNames] = str;
+//    console.log(str);
+   
+    // console.log(str);
 
 
     //1. Destructor this string array to firstN ame and lastName by using split() method of string object
 
     //2. Display it [Replace it with ${firstName} ${lastName} once you have the variables]
-    des_string.innerHTML = `Hello , I am ${firstNames} ${lastNames} `
+    // des_string.innerHTML = `Hello , I am ${firstNames} ${lastNames} `
 
 
 

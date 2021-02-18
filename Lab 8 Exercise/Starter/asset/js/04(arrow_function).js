@@ -19,3 +19,4 @@ const arrowFun2 = (a,b) => a+b;
 //4. A minimized arrow function [No return statement , no curly brace, no square bracket]
 //5. The function will return the sqrt , use Math.sqrt(var);
 const arrowFun3 = a => a**1/2;
+    
