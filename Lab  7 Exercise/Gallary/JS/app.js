@@ -12,14 +12,9 @@ const ItemThree = document.querySelector('.itemThree');
 const ItemFour =document.querySelector('.itemFour');
 const ItemFive = document.querySelector('.itemFive')
 
-
-
-
 function getImages(){
 
     let imageid= 1;
-   
-
     while (imageid < 100){
 
         fetch(`https://picsum.photos/id/${imageid}/200/300`)
@@ -30,7 +25,7 @@ function getImages(){
             
           let imgp = document.createElement('img');
             imgp.src = img;
-        
+
             allImagePlaceHolder.appendChild(imgp)
             allItems.src = img;
             // ItemTwo.src = img;
@@ -103,7 +98,6 @@ function getImages(){
             // ItemThree.src = img;
             ItemFour.src = img;
             // ItemFive.src = img;
-
          
         })
         .catch(function(err) {
@@ -115,7 +109,6 @@ function getImages(){
             // return res
            
             let img =  res.url + '';
-            
           let imgp = document.createElement('img');
             imgp.src = img;
         

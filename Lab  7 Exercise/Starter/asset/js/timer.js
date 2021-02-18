@@ -22,7 +22,6 @@ function startTime() {
    setTimeout(startTime, 500);
    
 
-
 }
 
 function addZero(i) {
