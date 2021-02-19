@@ -25,17 +25,17 @@ function arrayDestructuring() {
 
     // we have an array with the name and surname
     let str = "Margaery Tyrell" 
-    str.split(" ");
-   let  [firstNames , lastNames] = str;
-//    console.log(str);
-   
-    // console.log(str);
+    
+    let newStringArray = str.split(" ");
+   let  [fName , lName] = newStringArray;
 
 
-    //1. Destructor this string array to firstN ame and lastName by using split() method of string object
+    // console.log(str.split(" "));
+    
+    //1. Destructor this string array to firstName and lastName by using split() method of string object
 
     //2. Display it [Replace it with ${firstName} ${lastName} once you have the variables]
-    // des_string.innerHTML = `Hello , I am ${firstNames} ${lastNames} `
+    des_string.innerHTML = `Hello , I am ${fName} ${lName} `
 
 
 
@@ -57,7 +57,7 @@ function objectDestructuring() {
 
 
     //1. Destructor this object to fName and sName [different naming]
-    let {fName , sName}  = person;
+    let {firstName:fName ,lastName:sName}  = person;
 
     //2. Display it [Replace it with ${Name} ${lName} once you have the variables]
     des_obj2.innerHTML = `Hi , I am ${fName} ${sName} `
@@ -71,7 +71,7 @@ function spreadSyntax() {
     const arr = [1, 2, 3, 4];
 
     //1. Pass the array using spread syntax
-    const result = sum1();
+    const result = sum1(...arr);
 
     //Display it 
     spread_syntax.innerHTML = `The Sum is : ${result} `
@@ -95,8 +95,6 @@ function restSyntax() {
     //Display it 
     rest_syntax.innerHTML = `The Sum is : ${result} `
 
-
-
 }
 
 //Function that add 4 numbers 
@@ -110,11 +108,16 @@ function sum1(x1, x2, x3, x4) {
 
 
 //3. Make this function to support rest, and add 5 numbers
-function sum2(x1, x2) {
+function sum2(x1, x2 , ...arr) {
 
+    let sumResult = x1 + x2;
     //4. Function that add 5 numbers [Consider Adding the arr[0], arr[1], arr[2]]
-
-    return x1 + x2;
+    for (const iterator of arr) {
+        sumResult += iterator;
+        
+    }
+    
+    return sumResult;
 
 
 }

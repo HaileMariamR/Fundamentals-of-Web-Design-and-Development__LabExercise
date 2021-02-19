@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-
 function templateStringConcatenation() {
 
     // A Student Object 

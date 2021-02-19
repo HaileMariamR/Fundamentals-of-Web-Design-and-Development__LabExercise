@@ -16,8 +16,6 @@ function forINLoop() {
 
     for (let key in student) {
         
-                let values = [student.name , student.age, student.year];
-                let count = 0;
                 forInLoop.innerHTML +=
                 `
                 <li class="list-group-item" >${key} : ${student[key]}</li>
